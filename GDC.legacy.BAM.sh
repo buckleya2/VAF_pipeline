@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# download BAM file from GDC legacy archive, index
+
+# specify GDC token for controlled access
+token=$(<${token_file})
+
+path="/nrnb/users/abuckley/GDC/somatic/VAF"
+export token="MIIDHgYJKoZIhvcNAQcCoIIDDzCCAwsCAQExDTALBglghkgBZQMEAgEwggFsBgkqhkiG9w0BBwGgggFdBIIBWXsidG9rZW4iOnsibWV0aG9kcyI6WyJzYW1sMiJdLCJleHBpcmVzX2F0IjoiMjAxNy0wNy0xMVQwMTowMzoxMi4xNTk3MDFaIiwiZXh0cmFzIjp7fSwidXNlciI6eyJPUy1GRURFUkFUSU9OIjp7ImlkZW50aXR5X3Byb3ZpZGVyIjp7ImlkIjoiZXJhX2NvbW1vbiJ9LCJwcm90b2NvbCI6eyJpZCI6InNhbWwyIn0sImdyb3VwcyI6W3siaWQiOiI5MTBhMDdjNWUxMTk0NTE5OTJjOGEyMjRlODc0MDQ3MCJ9XX0sImlkIjoiTlNDSE9SSyIsIm5hbWUiOiJOU0NIT1JLIn0sImF1ZGl0X2lkcyI6WyJ1elh3S1lzTlRPV0JLRFpORUtrZ0dnIl0sImlzc3VlZF9hdCI6IjIwMTctMDYtMTFUMDE6MDM6MTIuMTYwMDU2WiJ9fTGCAYUwggGBAgEBMFwwVzELMAkGA1UEBhMCVVMxDjAMBgNVBAgMBVVuc2V0MQ4wDAYDVQQHDAVVbnNldDEOMAwGA1UECgwFVW5zZXQxGDAWBgNVBAMMD3d3dy5leGFtcGxlLmNvbQIBATALBglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEAIe86REvBVvXLKVSJ2pdg0whri+Xlm2frWbEEmKajkHRqtbX5+hfAu+1pmgwBQbnqrE6lc-TW08K+y-HMxJh-+oiMs7lYuNShJCOacDzpb5YUBr5JqUq8lf67MPwdo8fjif8YH1CY1RwUYsFK-2ab69Yel9Ac+-3RHY05CUydqo3sSEzLjcV2ucximB6w9FTug1Hh4SW1Re-ZvHkEO1IXFa-t0m1bKeeNAyONTrvDocGUwjIrDnAc2zcANijXHGLWHh365noZY-R3BsRrPLkChANf3P0bSkEJiymLh5V0Yr3Le2E6M1s-kL9go6ICVYTF+HMkIyOk+rpOMjz9gWRjvQ=="
+curl -k --header "X-Auth-Token: $token" 'https://gdc-api.nci.nih.gov/legacy/data/'"${UUID}"'' --output ${path}/${ID}/${ID}.bam
+
+${samtools} index ${path}/${ID}/${ID}.bam
