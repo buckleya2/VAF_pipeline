@@ -4,7 +4,7 @@
 # one script per sample
 
 path="/nrnb/users/abuckley/GDC/somatic/scripts/clean/"
-template="${path}/VAF.pipeline.sh"
+template="/cellar/users/abuckley/github_scripts/VAF_pipeline/VAF.pipeline.sh"
 samp_file="${path}/somatic.germline.merge"
 
 count=0

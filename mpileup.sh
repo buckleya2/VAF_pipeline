@@ -7,4 +7,4 @@
 positions="${path}/VAF/${ID}/${ID}.germline.bed"
 bam="${path}/VAF/${ID}/${ID}.bam"
 
-${samtools} view -hu ${bam} -L ${positions} |${samtools} mpileup -uv - -t INFO/AD -f ${ref} |  python ${scripts_dir}/parse.mpileup.py > ${path}/VAF/${ID}/${ID}.somatic.vcf
+${samtools} view -hu ${bam} -L ${positions} |${samtools} mpileup -uv - -t INFO/AD -f ${ref} |  python ${scripts_dir}/VAF_pipeline/parse.mpileup.py > ${path}/VAF/${ID}/${ID}.somatic.vcf
